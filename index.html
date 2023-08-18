@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Cat and Mouse 4</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <img class="img-fluid rounded mx-auto d-block" src="TemplateData/Logo.png" alt="Cat and Mouse 4" width="599" height="697">
+
+    <div class="text-center">
+      <ul class="nav nav-pills justify-content-center" role="tablist">
+        <li class="nav-item rounded">
+          <a class="nav-link active" data-bs-toggle="pill" href="#play">Play</a>
+        </li>
+        <li class="nav-item rounded">
+          <a class="nav-link" data-bs-toggle="pill" href="#about">About</a>
+        </li>
+        <li class="nav-item rounded">
+          <a class="nav-link" data-bs-toggle="pill" href="#design">Design</a>
+        </li>
+        <li class="nav-item rounded">
+          <a class="nav-link" data-bs-toggle="pill" href="#armaments">Armaments</a>
+        </li>
+        <li class="nav-item rounded">
+          <a class="nav-link" data-bs-toggle="pill" href="#adornments">Adornments</a>
+        </li>
+        <li class="nav-item rounded">
+          <a class="nav-link" data-bs-toggle="pill" href="#levels">Levels</a>
+        </li>
+        <li class="nav-item rounded">
+          <a class="nav-link" data-bs-toggle="pill" href="#music">Music</a>
+        </li>
+      </ul>
+    </div><br>
+
+    <div class="tab-content">
+
+      <div id="play" class="container tab-pane fade show active">
+        <div id="unity-container" class="unity-desktop text-center">
+          <canvas id="unity-canvas"></canvas>
+          <div id="unity-loading-bar">
+            <div id="unity-logo"></div>
+            <div id="unity-progress-bar-empty">
+              <div id="unity-progress-bar-full"></div>
+            </div>
+          </div>
+          <div id="unity-mobile-warning">
+            WebGL builds are not supported on mobile devices.
+          </div>
+
+          <div id="unity-footer">
+            <div id="unity-webgl-logo"></div>
+            <div id="unity-fullscreen-button"></div>
+            <div id="unity-build-title">Progress is saved upon leaving this page. Best played in fullscreen!</div>
+          </div>
+        </div>
+        <br><br>
+      </div>
+
+      <div id="about" class="container tab-pane fade"><br>
+        <h2><b>Cat and Mouse 4 is here!</b></h2>
+        <p>Over the course of Summer 2023, I’ve been working nonstop to get this game out right on the one-year anniversary of Cat and Mouse 3. Every day, I would wake up, have breakfast, hop right on Unity, eat lunch, and go back to Unity. If I had work that day, I’d go there and talk about Cat and Mouse. Then I would come back, have dinner, and go right back into Unity. This has been a really fun summer, in no small part due to the comical amount of Unity I’ve done.</p>
+        <div v-html="html"></div><br><br><br><br><br><br><br><br><br><br>
+      </div>
+
+      <div id="design" class="container tab-pane fade"><br>
+        <h2><b>Design and Timeline</b></h2>
+        <p>Over a three month period spanning 14 weeks, I completed Cat and Mouse 4. I didn’t keep a track of hours, but it’s likely over 300 hours spent on the computer, with countless more hours offline, designing items and gameplay.</p>
+        <div v-html="html"></div><br><br><br><br><br><br><br><br><br><br>
+      </div>
+
+      <div id="armaments" class="container tab-pane fade"><br>
+        <h2><b>Armament Design</b></h2>
+        <h4>Spoiler warning! Make sure to play through the game before reading.</h4><br>
+        <div v-html="html"></div><br><br><br><br><br><br><br><br><br><br>
+      </div>
+
+      <div id="adornments" class="container tab-pane fade"><br>
+        <h2><b>Adornment Design</b></h2>
+        <h4>Spoiler warning! Make sure to play through the game before reading.</h4><br>
+        <div v-html="html"></div><br><br><br><br><br><br><br><br><br><br>
+      </div>
+
+      <div id="levels" class="container tab-pane fade"><br>
+        <h2><b>Level Design</b></h2>
+        <h4>Spoiler warning! Make sure to play through the game before reading.</h4><br>
+        <div v-html="html"></div><br><br><br><br><br><br><br><br><br><br>
+      </div>
+
+      <div id="music" class="container tab-pane fade"><br>
+        <h2><b>Music Design</b></h2>
+        <h4>Spoiler warning! Make sure to play through the game before reading.</h4>
+        <p>If you want to use these songs somewhere, just credit me and my website (<a href="https://jasonfeng365.github.io">https://jasonfeng365.github.io</a>), and you're good to go.</p>
+        <div v-html="html"></div><br><br><br><br><br><br><br><br><br><br>
+      </div>
+    </div>
+
+    <script>
+      var buildUrl = "Build";
+      var loaderUrl = buildUrl + "/129978d678383f70d301118a7945cf44.js";
+      var config = {
+        dataUrl: buildUrl + "/93aef206ecdd1712fdd4f31a1dfb0afc.data",
+        frameworkUrl: buildUrl + "/28558b83789adc3fdc2d13a00a1630ad.js",
+        codeUrl: buildUrl + "/e146631262e04504cb60e981c5678f92.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "DefaultCompany",
+        productName: "Cat and Mouse IV",
+        productVersion: "1.0",
+      };
+
+      var container = document.querySelector("#unity-container");
+      var canvas = document.querySelector("#unity-canvas");
+      var loadingBar = document.querySelector("#unity-loading-bar");
+      var progressBarFull = document.querySelector("#unity-progress-bar-full");
+      var fullscreenButton = document.querySelector("#unity-fullscreen-button");
+      var mobileWarning = document.querySelector("#unity-mobile-warning");
+
+      // By default Unity keeps WebGL canvas render target size matched with
+      // the DOM size of the canvas element (scaled by window.devicePixelRatio)
+      // Set this to false if you want to decouple this synchronization from
+      // happening inside the engine, and you would instead like to size up
+      // the canvas DOM size and WebGL render target sizes yourself.
+      // config.matchWebGLToCanvasSize = false;
+
+      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
+        container.className = "unity-mobile";
+        // Avoid draining fillrate performance on mobile devices,
+        // and default/override low DPI mode on mobile browsers.
+        config.devicePixelRatio = 1;
+        mobileWarning.style.display = "block";
+        setTimeout(() => {
+          mobileWarning.style.display = "none";
+        }, 5000);
+      } else {
+        canvas.style.width = "960px";
+        canvas.style.height = "540px";
+      }
+      loadingBar.style.display = "block";
+
+      var script = document.createElement("script");
+      script.src = loaderUrl;
+      script.onload = () => {
+        createUnityInstance(canvas, config, (progress) => {
+          progressBarFull.style.width = 100 * progress + "%";
+        }).then((unityInstance) => {
+          loadingBar.style.display = "none";
+          fullscreenButton.onclick = () => {
+            unityInstance.SetFullscreen(1);
+          };
+        }).catch((message) => {
+          alert(message);
+        });
+      };
+      document.body.appendChild(script);
+    </script>
+    <script src="TemplateData/functions.js"></script>
+    <script src="TemplateData/about.js"></script>
+    <script src="TemplateData/design.js"></script>
+    <script src="TemplateData/armaments.js"></script>
+    <script src="TemplateData/adornments.js"></script>
+    <script src="TemplateData/levels.js"></script>
+    <script src="TemplateData/music.js"></script>
+  </body>
+</html>
