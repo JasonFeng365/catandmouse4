@@ -2,7 +2,7 @@ function image(filepath){
     return "<img class=\"img-fluid rounded mx-auto d-block\" src=\"TemplateData/"+filepath+"\">"
 }
 function audio(name){
-    return "<audio controls><source src=\"TemplateData/music/"+name+".mp3\" type=\"audio/mpeg\"></audio>"
+    return "<audio controls><source src=\"TemplateData/Music/"+name+".mp3\" type=\"audio/mpeg\"></audio>"
 }
 
 function beginGroup(href, name){
